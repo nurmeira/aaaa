@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA Master</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+  <main class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- STEP 1 -->
+    <section id="step1" class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="bg-blue-700 px-6 py-8 text-center text-white">
+          <h1 class="text-2xl font-bold">Master Data Update Form</h1>
+          <p class="text-sm opacity-90 mt-1">Isi data awal lalu lanjut</p>
+        </div>
+
+        <div class="p-6 space-y-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1">Tanggal *</label>
+            <input id="tanggal" type="date"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <p id="err-tanggal" class="hidden text-sm text-red-600 mt-1">Tanggal wajib</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-1">Shift *</label>
+            <select id="shift"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="">Pilih Shift</option>
+              <option value="1">Shift 1</option>
+              <option value="2">Shift 2</option>
+              <option value="3">Shift 3</option>
+            </select>
+            <p id="err-shift" class="hidden text-sm text-red-600 mt-1">Shift wajib</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-1">NPK *</label>
+            <input id="npk" type="text" placeholder="Masukkan NPK"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <p id="err-npk" class="hidden text-sm text-red-600 mt-1">NPK wajib</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-1">Channel *</label>
+            <select id="channel"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="">Loading...</option>
+            </select>
+            <p id="status" class="text-xs text-slate-500 mt-1"></p>
+            <p id="err-channel" class="hidden text-sm text-red-600 mt-1">Channel wajib</p>
+          </div>
+
+          <div id="machineWrap" class="hidden">
+            <label class="block text-sm font-semibold mb-1">Machine *</label>
+            <select id="machine"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="">Pilih Machine</option>
+            </select>
+            <p id="err-machine" class="hidden text-sm text-red-600 mt-1">Machine wajib</p>
+          </div>
+
+          <div id="nameWrap" class="hidden">
+            <label class="block text-sm font-semibold mb-1">Name</label>
+            <input id="name" type="text" disabled
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 bg-slate-50">
+          </div>
+
+          <!-- IMPORTANT: ini tombol NEXT -->
+          <button id="btnNext"
+            class="w-full bg-blue-700 text-white py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
+            Selanjutnya →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section id="step2" class="hidden">
+      <div class="bg-blue-700 text-white rounded-2xl shadow px-6 py-4 flex items-center justify-between">
+        <div class="font-bold text-lg">Data Pemeriksaan</div>
+        <button id="btnBack" class="text-sm bg-white/15 hover:bg-white/20 px-3 py-2 rounded-lg">
+          ← Kembali
+        </button>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-6 space-y-5">
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 flex gap-3">
+          <div class="text-blue-700 text-xl">ⓘ</div>
+          <div>
+            <div class="font-semibold text-slate-800">Perhatian: Anda sedang mengisi untuk</div>
+            <div class="text-slate-600 mt-1">
+              <span class="font-semibold" id="infoChannel">-</span>
+              <span class="text-slate-400">|</span>
+              Total Master <span class="font-semibold" id="infoTotal">0</span>
+            </div>
+            <div class="text-xs text-slate-500 mt-1" id="infoMeta"></div>
+          </div>
+        </div>
+
+        <div id="masterList" class="space-y-4"></div>
+
+        <div class="bg-white rounded-2xl shadow p-5">
+          <button id="btnSubmit"
+            class="w-full bg-blue-700 text-white py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
+            Submit & Simpan
+          </button>
+          <p id="msg" class="text-sm text-center mt-3"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- app.js -->
+  <script src="./app.js"></script>
+</body>
+</html>
